@@ -35,7 +35,7 @@ class WPEditorAjax {
       $result[1] = '<h3>' . __('Success', 'wp-editor') . '</h3><p>' . $_REQUEST['_success'] . '</p>'; 
     }
     
-    $out = json_encode($result);
+    $out = wp_json_encode($result);
     echo $out;
     die();
   }
@@ -48,7 +48,7 @@ class WPEditorAjax {
     elseif(isset($_POST['current_plugin_root'])) {
       $upload = WPEditorBrowser::uploadPluginFiles();
     }
-    echo json_encode($upload);
+    echo wp_json_encode($upload);
     die();
   }
   
@@ -100,7 +100,7 @@ class WPEditorAjax {
       $result[2] = $_POST['extension'];
     }
     
-    $out = json_encode($result);
+    $out = wp_json_encode($result);
     echo $out;
     die();
   }  
@@ -119,7 +119,7 @@ class WPEditorAjax {
     if(isset($_REQUEST['type'])) {
       $type = $_REQUEST['type'];
     }
-    $out = json_encode(WPEditorBrowser::getFilesAndFolders($dir, $contents, $type));
+    $out = wp_json_encode(WPEditorBrowser::getFilesAndFolders($dir, $contents, $type));
     echo $out;
     die();
   }
