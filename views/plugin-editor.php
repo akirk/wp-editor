@@ -320,8 +320,8 @@
         <?php } ?>
         onCursorActivity: function() {
           if(activeLine) {
-            editor.setLineClass(hlLine, null, null);
-            hlLine = editor.setLineClass(editor.getCursor().line, null, activeLine);
+            editor.addLineClass(hlLine, null, null);
+            hlLine = editor.addLineClass(editor.getCursor().line, null, activeLine);
           }
         },
         onChange: function() {
@@ -334,7 +334,7 @@
       });
       $jq('.CodeMirror').css('font-size', '<?php echo WPEditorSetting::getValue("change_plugin_editor_font_size") ? WPEditorSetting::getValue("change_plugin_editor_font_size") . "px" : "12px"; ?>');
       if(activeLine) {
-        var hlLine = editor.setLineClass(0, activeLine);
+        var hlLine = editor.addLineClass(0, activeLine);
       }
       <?php if(WPEditorSetting::getValue('enable_plugin_editor_height')) { ?>
         $jq = jQuery.noConflict();

@@ -235,6 +235,39 @@ class WPEditor {
   }
   
   public function registerDefaultScript() {
+    wp_deregister_script('quicktags');
+    wp_register_script('quicktags', WPEDITOR_URL . '/js/quicktags.js', false, WPEDITOR_VERSION_NUMBER, true);
+    wp_localize_script('quicktags', 'quicktagsL10n', array(
+      'closeAllOpenTags'      => __( 'Close all open tags', 'wp-editor' ),
+      'closeTags'             => __( 'close tags', 'wp-editor' ),
+      'enterURL'              => __( 'Enter the URL', 'wp-editor' ),
+      'enterImageURL'         => __( 'Enter the URL of the image', 'wp-editor' ),
+      'enterImageDescription' => __( 'Enter a description of the image', 'wp-editor' ),
+      'textdirection'         => __( 'text direction', 'wp-editor' ),
+      'toggleTextdirection'   => __( 'Toggle Editor Text Direction', 'wp-editor' ),
+      'dfw'                   => __( 'Distraction-free writing mode', 'wp-editor' ),
+      'strong'          => __( 'Bold', 'wp-editor' ),
+      'strongClose'     => __( 'Close bold tag', 'wp-editor' ),
+      'em'              => __( 'Italic', 'wp-editor' ),
+      'emClose'         => __( 'Close italic tag', 'wp-editor' ),
+      'link'            => __( 'Insert link', 'wp-editor' ),
+      'blockquote'      => __( 'Blockquote', 'wp-editor' ),
+      'blockquoteClose' => __( 'Close blockquote tag', 'wp-editor' ),
+      'del'             => __( 'Deleted text (strikethrough)', 'wp-editor' ),
+      'delClose'        => __( 'Close deleted text tag', 'wp-editor' ),
+      'ins'             => __( 'Inserted text', 'wp-editor' ),
+      'insClose'        => __( 'Close inserted text tag', 'wp-editor' ),
+      'image'           => __( 'Insert image', 'wp-editor' ),
+      'ul'              => __( 'Bulleted list', 'wp-editor' ),
+      'ulClose'         => __( 'Close bulleted list tag', 'wp-editor' ),
+      'ol'              => __( 'Numbered list', 'wp-editor' ),
+      'olClose'         => __( 'Close numbered list tag', 'wp-editor' ),
+      'li'              => __( 'List item', 'wp-editor' ),
+      'liClose'         => __( 'Close list item tag', 'wp-editor' ),
+      'code'            => __( 'Code', 'wp-editor' ),
+      'codeClose'       => __( 'Close code tag', 'wp-editor' ),
+      'more'            => __( 'Insert Read More tag', 'wp-editor' ),
+    ));
     wp_register_script('wpeditor', WPEDITOR_URL . '/js/wpeditor.js', false, WPEDITOR_VERSION_NUMBER);
     wp_register_script('wp-editor-posts-jquery', WPEDITOR_URL . '/js/posts-jquery.js', false, WPEDITOR_VERSION_NUMBER, true);
     wp_register_script('fancybox', WPEDITOR_URL . '/extensions/fancybox/js/jquery.fancybox-1.3.4.pack.js', false, WPEDITOR_VERSION_NUMBER);
