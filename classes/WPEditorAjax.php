@@ -57,6 +57,9 @@ class WPEditorAjax {
     try {
       if(isset($_POST['new_content']) && isset($_POST['real_file'])) {
         $real_file = $_POST['real_file'];
+        //detect and handle unc paths
+        if(substr($real_file, 0, 4) === '\\\\\\\\')
+	  $real_file = str_replace('\\\\','\\',$real_file);	
         if(file_exists($real_file)) {
           if(is_writable($real_file)) {
             $new_content = stripslashes($_POST['new_content']);
