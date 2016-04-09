@@ -220,16 +220,25 @@ function edButton(id, display, tagStart, tagEnd, access) {
     };
 
     _wp_editor_qt = function(t, i, target, canvas) {
-      window.send_to_editor('');
       wp_editor.save();
       var cursor = wp_editor.getCursor();
+      window.set_content_cursor(canvas, cursor);
       t.theButtons[i].callback.call(t.theButtons[i], target, canvas, t);
-      var l = t.theButtons[i].tagStart.length;
-      if(t.theButtons[i].isOpen(t) === false) {
-        l = t.theButtons[i].tagEnd.length;
+      if(t.theButtons[i].id !== 'close' && t.theButtons[i].id !== 'img') {
+        var l = t.theButtons[i].tagStart.length, lines = t.theButtons[i].tagStart.substr(0, this.selectionStart).split("\n");
+        if(t.theButtons[i].id !== 'more' && t.theButtons[i].isOpen(t) === false) {
+          l = t.theButtons[i].tagEnd.length;
+          lines = t.theButtons[i].tagEnd.substr(0, this.selectionStart).split("\n");
+        }
+        line = lines.length - 1 + cursor.line;
+      }
+      else {
+        var l = 0;
+        cursor = window.get_content_cursor(canvas, canvas.selectionStart);
+        line = cursor.line
       }
       wp_editor.setValue(canvas.value);
-      wp_editor.setCursor(cursor.line, cursor.ch + l);
+      wp_editor.setCursor(line, cursor.ch + l);
       wp_editor.refresh();
       wp_editor.focus();
     }
