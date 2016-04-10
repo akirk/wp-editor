@@ -212,6 +212,7 @@
   <script type="text/javascript">
     (function($){
       $(document).ready(function(){
+        $('a.nivo-lightbox').nivoLightbox();
         $('.cancel-plugin-create').click(function() {
           $('#template_form, #templateside, .updated.below-h2, .fileedit-sub').show();
           $('#plugin_create_form').hide();
@@ -361,39 +362,39 @@
         $jq('.CodeMirror-scroll').height($jq('.CodeMirror-scroll').height() - 33);
         editor.focus();
       }
-      $jq('#plugin_fullscreen').live("click", function() {
+      $jq('#plugin_fullscreen').on("click", function() {
         toggleFullscreenEditing();
         editor.focus();
       })
-      $jq('#plugin_save').live("click", function() {
+      $jq('#plugin_save').on("click", function() {
         $jq('.ajax-editor-update').submit();
         editor.focus();
       })
-      $jq('#plugin_undo').live("click", function() {
+      $jq('#plugin_undo').on("click", function() {
         editor.undo();
         editor.focus();
       })
-      $jq('#plugin_redo').live("click", function() {
+      $jq('#plugin_redo').on("click", function() {
         editor.redo();
         editor.focus();
       })
-      $jq('#plugin_search').live("click", function() {
+      $jq('#plugin_search').on("click", function() {
         CodeMirror.commands.find(editor);
         return false;
       })
-      $jq('#plugin_find_next').live("click", function() {
+      $jq('#plugin_find_next').on("click", function() {
         CodeMirror.commands.findNext(editor);
         return false;
       })
-      $jq('#plugin_find_prev').live("click", function() {
+      $jq('#plugin_find_prev').on("click", function() {
         CodeMirror.commands.findPrev(editor);
         return false;
       })
-      $jq('#plugin_replace').live("click", function() {
+      $jq('#plugin_replace').on("click", function() {
         CodeMirror.commands.replace(editor);
         return false;
       })
-      $jq('#plugin_replace_all').live("click", function() {
+      $jq('#plugin_replace_all').on("click", function() {
         CodeMirror.commands.replaceAll(editor);
         return false;
       })

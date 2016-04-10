@@ -43,7 +43,7 @@ class WPEditorBrowser {
             $output[$i]['filetype'] = 'file';
             $path = pathinfo($output[$i]['name']);
             if(isset($path['extension'])) {
-              $output[$i]['extension'] = $path['extension'];
+              $output[$i]['extension'] = strtolower($path['extension']);
             }
             $output[$i]['filesize'] = '(' . round(filesize($topdir) * .0009765625, 2) . ' KB)';
             if($type == 'theme') {
@@ -68,7 +68,7 @@ class WPEditorBrowser {
         $output['filetype'] = 'file';
         $path = pathinfo($output['name']);
         if(isset($path['extension'])) {
-          $output['extension'] = $path['extension'];
+          $output['extension'] = strtolower($path['extension']);
         }
         $output['content'] = file_get_contents($dir);
         $output['writable'] = false;
@@ -122,7 +122,7 @@ class WPEditorBrowser {
               $output[$i]['filetype'] = 'file';
               $path = pathinfo($rows[$i]['data']);
               if(isset($path['extension'])) {
-                $output[$i]['extension'] = $path['extension'];
+                $output[$i]['extension'] = strtolower($path['extension']);
               }
               $output[$i]['filesize'] = '(' . round(filesize($topdir) * .0009765625, 2) . ' KB)';
             }
@@ -150,7 +150,7 @@ class WPEditorBrowser {
     }
     else {
       $output[-1] = 'bad file or unable to open';
-    }
+    };
     return $output;
   }
   
@@ -215,7 +215,7 @@ class WPEditorBrowser {
     }
     else {
       $file = pathinfo($file);
-      if(isset($file['extension']) && in_array($file['extension'], $allowed_extensions)) {
+      if(isset($file['extension']) && in_array(strtolower($file['extension']), $allowed_extensions)) {
         $output = true;
       }
       else {

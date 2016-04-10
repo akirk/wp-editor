@@ -363,39 +363,39 @@
         $jq('.CodeMirror-scroll').height($jq('.CodeMirror-scroll').height() - 33);
         editor.focus();
       }
-      $jq('#theme_fullscreen').live("click", function() {
+      $jq('#theme_fullscreen').on("click", function() {
         toggleFullscreenEditing();
         editor.focus();
       })
-      $jq('#theme_save').live("click", function() {
+      $jq('#theme_save').on("click", function() {
         $jq('.ajax-editor-update').submit();
         editor.focus();
       })
-      $jq('#theme_undo').live("click", function() {
+      $jq('#theme_undo').on("click", function() {
         editor.undo();
         editor.focus();
       })
-      $jq('#theme_redo').live("click", function() {
+      $jq('#theme_redo').on("click", function() {
         editor.redo();
         editor.focus();
       })
-      $jq('#theme_search').live("click", function() {
+      $jq('#theme_search').on("click", function() {
         CodeMirror.commands.find(editor);
         return false;
       })
-      $jq('#theme_find_next').live("click", function() {
+      $jq('#theme_find_next').on("click", function() {
         CodeMirror.commands.findNext(editor);
         return false;
       })
-      $jq('#theme_find_prev').live("click", function() {
+      $jq('#theme_find_prev').on("click", function() {
         CodeMirror.commands.findPrev(editor);
         return false;
       })
-      $jq('#theme_replace').live("click", function() {
+      $jq('#theme_replace').on("click", function() {
         CodeMirror.commands.replace(editor);
         return false;
       })
-      $jq('#theme_replace_all').live("click", function() {
+      $jq('#theme_replace_all').on("click", function() {
         CodeMirror.commands.replaceAll(editor);
         return false;
       })

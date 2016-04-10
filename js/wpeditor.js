@@ -89,7 +89,7 @@ function toggleFullscreenEditing() {
             //  runCodeMirror(newElement.data('extension'));
             //}
             if(checkExtension(newElement.data('extension'))) {
-              $.fancybox(this);
+              return true;
             }
             else {
               var type = $('#content-type').val();
@@ -164,7 +164,7 @@ function toggleFullscreenEditing() {
                 $.each(result, function(index, value){
                   if(checkExtension(value.extension)) {
                     newElement.children('ul').append(
-                      $('<li><a href="' + value.url + '" class="fancybox ' + value.filetype + '">' + value.name + ' <span class="tiny">' + value.filesize + '</span></a></li>').addClass(
+                      $('<li><a href="' + value.url + '" class="nivo-lightbox ' + value.filetype + '">' + value.name + ' <span class="tiny">' + value.filesize + '</span></a></li>').addClass(
                         value.extension + ' ' + value.filetype
                       ).data({
                         'path': value.path,
@@ -175,7 +175,8 @@ function toggleFullscreenEditing() {
                         'url': value.url,
                         'writable': value.writable
                       }
-                    ))
+                    ));
+                    $('a.nivo-lightbox').nivoLightbox();
                   }
                   else {
                     var writable = '';

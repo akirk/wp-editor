@@ -228,7 +228,8 @@ class WPEditor {
   
   public function registerDefaultStylesheet() {
     wp_register_style('wpeditor', WPEDITOR_URL . '/wpeditor.css', false, WPEDITOR_VERSION_NUMBER);
-    wp_register_style('fancybox', WPEDITOR_URL . '/extensions/fancybox/jquery.fancybox-1.3.4.css', false, WPEDITOR_VERSION_NUMBER);
+    wp_register_style('nivo-lightbox', WPEDITOR_URL . '/extensions/nivo-lightbox/css/nivo-lightbox.css', false, WPEDITOR_VERSION_NUMBER);
+    wp_register_style('nivo-lightbox-default', WPEDITOR_URL . '/extensions/nivo-lightbox/themes/default/default.css', array('nivo-lightbox'), WPEDITOR_VERSION_NUMBER);
     wp_register_style('codemirror', WPEDITOR_URL . '/extensions/codemirror/codemirror.css', false, WPEDITOR_VERSION_NUMBER);
     wp_register_style('codemirror_dialog', WPEDITOR_URL . '/extensions/codemirror/dialog.css', false, WPEDITOR_VERSION_NUMBER);
     wp_register_style('codemirror_themes', WPEDITOR_URL . '/extensions/codemirror/themes/themes.css', false, WPEDITOR_VERSION_NUMBER);
@@ -270,7 +271,7 @@ class WPEditor {
     ));
     wp_register_script('wpeditor', WPEDITOR_URL . '/js/wpeditor.js', false, WPEDITOR_VERSION_NUMBER);
     wp_register_script('wp-editor-posts-jquery', WPEDITOR_URL . '/js/posts-jquery.js', false, WPEDITOR_VERSION_NUMBER, true);
-    wp_register_script('fancybox', WPEDITOR_URL . '/extensions/fancybox/js/jquery.fancybox-1.3.4.pack.js', false, WPEDITOR_VERSION_NUMBER);
+    wp_register_script('nivo-lightbox', WPEDITOR_URL . '/extensions/nivo-lightbox/js/nivo-lightbox.min.js', array( 'jquery' ), WPEDITOR_VERSION_NUMBER);
     wp_register_script('codemirror', WPEDITOR_URL . '/extensions/codemirror/js/codemirror.js', false, WPEDITOR_VERSION_NUMBER);
     wp_register_script('attrchange', WPEDITOR_URL . '/extensions/attrchange/attrchange.js', false, WPEDITOR_VERSION_NUMBER);
     wp_register_script('codemirror_php', WPEDITOR_URL . '/extensions/codemirror/js/php.js', false, WPEDITOR_VERSION_NUMBER);

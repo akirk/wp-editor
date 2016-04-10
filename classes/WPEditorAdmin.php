@@ -53,8 +53,9 @@ class WPEditorAdmin {
   public static function editorStylesheetAndScripts() {
     wp_enqueue_style('wpeditor');
     wp_enqueue_script('wpeditor');
-    wp_enqueue_style('fancybox');
-    wp_enqueue_script('fancybox');
+    wp_enqueue_style('nivo-lightbox');
+    wp_enqueue_style('nivo-lightbox-default');
+    wp_enqueue_script('nivo-lightbox');
     wp_enqueue_style('codemirror');
     wp_enqueue_style('codemirror_dialog');
     wp_enqueue_style('codemirror_themes');
