@@ -269,21 +269,24 @@ class WPEditor {
       'codeClose'       => __( 'Close code tag', 'wp-editor' ),
       'more'            => __( 'Insert Read More tag', 'wp-editor' ),
     ));
-    wp_register_script('wpeditor', WPEDITOR_URL . '/js/wpeditor.js', false, WPEDITOR_VERSION_NUMBER);
-    wp_register_script('wp-editor-posts-jquery', WPEDITOR_URL . '/js/posts-jquery.js', false, WPEDITOR_VERSION_NUMBER, true);
-    wp_register_script('nivo-lightbox', WPEDITOR_URL . '/extensions/nivo-lightbox/js/nivo-lightbox.min.js', array( 'jquery' ), WPEDITOR_VERSION_NUMBER);
-    wp_register_script('codemirror', WPEDITOR_URL . '/extensions/codemirror/js/codemirror.js', false, WPEDITOR_VERSION_NUMBER);
-    wp_register_script('attrchange', WPEDITOR_URL . '/extensions/attrchange/attrchange.js', false, WPEDITOR_VERSION_NUMBER);
-    wp_register_script('codemirror_php', WPEDITOR_URL . '/extensions/codemirror/js/php.js', false, WPEDITOR_VERSION_NUMBER);
-    wp_register_script('codemirror_javascript', WPEDITOR_URL . '/extensions/codemirror/js/javascript.js', false, WPEDITOR_VERSION_NUMBER);
-    wp_register_script('codemirror_css', WPEDITOR_URL . '/extensions/codemirror/js/css.js', false, WPEDITOR_VERSION_NUMBER);
-    wp_register_script('codemirror_xml', WPEDITOR_URL . '/extensions/codemirror/js/xml.js', false, WPEDITOR_VERSION_NUMBER);
-    wp_register_script('codemirror_clike', WPEDITOR_URL . '/extensions/codemirror/js/clike.js', false, WPEDITOR_VERSION_NUMBER);
-    wp_register_script('codemirror_dialog', WPEDITOR_URL . '/extensions/codemirror/js/dialog.js', false, WPEDITOR_VERSION_NUMBER);
-    wp_register_script('codemirror_search', WPEDITOR_URL . '/extensions/codemirror/js/search.js', false, WPEDITOR_VERSION_NUMBER);
-    wp_register_script('codemirror_searchcursor', WPEDITOR_URL . '/extensions/codemirror/js/searchcursor.js', false, WPEDITOR_VERSION_NUMBER);
-    wp_register_script('codemirror_mustache', WPEDITOR_URL . '/extensions/codemirror/js/mustache.js', false, WPEDITOR_VERSION_NUMBER);
-    //wp_register_script('codemirror_foldcode', WPEDITOR_URL . '/extensions/codemirror/js/foldcode.js');
+    wp_register_script('wpeditor', WPEDITOR_URL . 'js/wpeditor.js', false, WPEDITOR_VERSION_NUMBER);
+    wp_register_script('wp-editor-posts-jquery', WPEDITOR_URL . 'js/posts-jquery.js', false, WPEDITOR_VERSION_NUMBER, true);
+    wp_register_script('nivo-lightbox', WPEDITOR_URL . 'extensions/nivo-lightbox/js/nivo-lightbox.min.js', array( 'jquery' ), WPEDITOR_VERSION_NUMBER);
+    wp_register_script('attrchange', WPEDITOR_URL . 'extensions/attrchange/attrchange.js', false, WPEDITOR_VERSION_NUMBER);
+
+    if(!wp_script_is('codemirror', 'enqueued')) {
+      wp_register_script('codemirror', WPEDITOR_URL . 'extensions/codemirror/js/codemirror.js', false, WPEDITOR_VERSION_NUMBER);
+    }
+    wp_register_script('codemirror_php', WPEDITOR_URL . 'extensions/codemirror/js/php.js', false, WPEDITOR_VERSION_NUMBER);
+    wp_register_script('codemirror_javascript', WPEDITOR_URL . 'extensions/codemirror/js/javascript.js', false, WPEDITOR_VERSION_NUMBER);
+    wp_register_script('codemirror_css', WPEDITOR_URL . 'extensions/codemirror/js/css.js', false, WPEDITOR_VERSION_NUMBER);
+    wp_register_script('codemirror_xml', WPEDITOR_URL . 'extensions/codemirror/js/xml.js', false, WPEDITOR_VERSION_NUMBER);
+    wp_register_script('codemirror_clike', WPEDITOR_URL . 'extensions/codemirror/js/clike.js', false, WPEDITOR_VERSION_NUMBER);
+    wp_register_script('codemirror_dialog', WPEDITOR_URL . 'extensions/codemirror/js/dialog.js', false, WPEDITOR_VERSION_NUMBER);
+    wp_register_script('codemirror_search', WPEDITOR_URL . 'extensions/codemirror/js/search.js', false, WPEDITOR_VERSION_NUMBER);
+    wp_register_script('codemirror_searchcursor', WPEDITOR_URL . 'extensions/codemirror/js/searchcursor.js', false, WPEDITOR_VERSION_NUMBER);
+    wp_register_script('codemirror_mustache', WPEDITOR_URL . 'extensions/codemirror/js/mustache.js', false, WPEDITOR_VERSION_NUMBER);
+    //wp_register_script('codemirror_foldcode', WPEDITOR_URL . 'extensions/codemirror/js/foldcode.js');
   }
   
   public static function getView($filename, $data=null) {

@@ -59,7 +59,9 @@ class WPEditorAdmin {
     wp_enqueue_style('codemirror');
     wp_enqueue_style('codemirror_dialog');
     wp_enqueue_style('codemirror_themes');
-    wp_enqueue_script('codemirror');
+    if(!wp_script_is('codemirror', 'enqueued')) {
+      wp_enqueue_script('codemirror');
+    }
     wp_enqueue_script('codemirror_mustache');
     wp_enqueue_script('codemirror_php');
     wp_enqueue_script('codemirror_javascript');
