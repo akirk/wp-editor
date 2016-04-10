@@ -196,6 +196,8 @@
                     <label class="checkbox_label"><?php _e('.js', 'wp-editor'); ?></label>
                     <input type="checkbox" name="theme_editor_allowed_extensions[]" value="css" <?php echo in_array('css', $allowed_extensions) ? 'checked="checked"' : '' ?>>
                     <label class="checkbox_label"><?php _e('.css', 'wp-editor'); ?></label>
+                    <input type="checkbox" name="theme_editor_allowed_extensions[]" value="scss" <?php echo in_array('scss', $allowed_extensions) ? 'checked="checked"' : '' ?>>
+                    <label class="checkbox_label"><?php _e('.scss', 'wp-editor'); ?></label>
                     <input type="checkbox" name="theme_editor_allowed_extensions[]" value="txt" <?php echo in_array('txt', $allowed_extensions) ? 'checked="checked"' : '' ?>>
                     <label class="checkbox_label"><?php _e('.txt', 'wp-editor'); ?></label>
                     <input type="checkbox" name="theme_editor_allowed_extensions[]" value="htm" <?php echo in_array('htm', $allowed_extensions) ? 'checked="checked"' : '' ?>>
@@ -481,6 +483,8 @@
                     <label class="checkbox_label"><?php _e('.js', 'wp-editor'); ?></label>
                     <input type="checkbox" name="plugin_editor_allowed_extensions[]" value="css" <?php echo in_array('css', $allowed_extensions) ? 'checked="checked"' : '' ?>>
                     <label class="checkbox_label"><?php _e('.css', 'wp-editor'); ?></label>
+                    <input type="checkbox" name="plugin_editor_allowed_extensions[]" value="scss" <?php echo in_array('scss', $allowed_extensions) ? 'checked="checked"' : '' ?>>
+                    <label class="checkbox_label"><?php _e('.scss', 'wp-editor'); ?></label>
                     <input type="checkbox" name="plugin_editor_allowed_extensions[]" value="txt" <?php echo in_array('txt', $allowed_extensions) ? 'checked="checked"' : '' ?>>
                     <label class="checkbox_label"><?php _e('.txt', 'wp-editor'); ?></label>
                     <input type="checkbox" name="plugin_editor_allowed_extensions[]" value="htm" <?php echo in_array('htm', $allowed_extensions) ? 'checked="checked"' : '' ?>>
