@@ -5,16 +5,22 @@ tags = {};
     $('.CodeMirror-scroll').height($('.CodeMirror-wrap').height() - $('#wp-editor-quicktags').height() - 3);
   });
   $(window).load(function() {
-    if(!isTinyMCE()) {
-      setTimeout(setupPostEditor, 50);
-    }
-    else {
-      editor_status = 'tmce';
-    }
+    setupPostEditor();
   });
 
   $(document).ready(function(){
-    console.log(tinymce);
+    $('#content').attrchange({
+      trackValues: true,
+      /* enables tracking old and new values */
+      callback: function(event) { //callback handler on DOM changes  
+        if(event.attributeName == 'style') {
+          if(event.oldValue !== event.newValue) {
+            $('.CodeMirror').css('top', $('#content').css('margin-top'));
+            $('.CodeMirror').css('margin-bottom', $('#content').css('margin-top'));
+          }
+        }
+      }
+    });
     /*
     $('#wpe_qt_content_fullscreen').live("click", function() {
       toggleFullscreenEditing();
@@ -29,9 +35,9 @@ tags = {};
     $('body').on('click', '#wp-link-submit', function() {
       wp_editor.toTextArea();
       wpLink.update();
-      var element = document.getElementById(wpActiveEditor);
+      var element = document.getElementById('content');
       var cursor = window.get_content_cursor(element, element.selectionStart);
-      postCodeMirror(wpActiveEditor);
+      postCodeMirror('content');
       wp_editor.setCursor(cursor.line, cursor.ch);
     });
 
@@ -47,14 +53,17 @@ tags = {};
         id = $(this).attr( 'data-wp-editor-id' );
         switchEditors.go(id, 'tmce');
         editor_status = 'tmce';
+        return false;
       }
-    })
+    });
     $('#content-html').click(function() {
       if(editor_status !== 'html') {
-        id = $(this).attr( 'data-wp-editor-id' );
+        id = $(this).data( 'wp-editor-id' );
         switchEditors.go(id, 'html');
-        postCodeMirror('content');
-        wp_editor.scrollTo(getPositionCookie('scrollPositionX'), getPositionCookie('scrollPositionY'));
+        setTimeout(function() {
+          postCodeMirror('content');
+          wp_editor.scrollTo(getCookie('scrollPositionX'), getCookie('scrollPositionY'));
+        }, 0);
         editor_status = 'html';
         return false;
       }
@@ -78,7 +87,7 @@ tags = {};
       }
     })
   })
-  function getPositionCookie(key) {
+  function getCookie(key, sub_key) {
     currentcookie = document.cookie;
     if(currentcookie.length > 0) {
       firstidx = currentcookie.indexOf(key + "=");
@@ -88,33 +97,25 @@ tags = {};
         if(lastidx == -1) {
           lastidx = currentcookie.length;
         }
+        if(sub_key) {
+          var result = {};
+          unescape(currentcookie.substring(firstidx, lastidx)).split("&").forEach(function(part) {
+            var item = part.split("=");
+            result[item[0]] = decodeURIComponent(item[1]);
+          });
+          return result[sub_key];
+        }
         return unescape(currentcookie.substring(firstidx, lastidx));
       }
     }
     return "";
   }
   function setupPostEditor() {
-    if(!isTinyMCE()) {
-      if($('#content').is(':visible')) {
-        if(!$('#content_parent').is(':visible')) {
-          postCodeMirror('content');
-          wp_editor.scrollTo(getPositionCookie('scrollPositionX'), getPositionCookie('scrollPositionY'));
-          editor_status = 'html';
-        }
-      }
+    editor_status = getCookie('wp-settings-1', 'editor');
+    if(editor_status == 'html') {
+      postCodeMirror('content');
+      //wp_editor.scrollTo(getCookie('scrollPositionX'), getCookie('scrollPositionY'));
     }
-  }
-  function isTinyMCE() {
-    is_tinyMCE_active = true;
-    if(typeof(tinyMCE) != "undefined") {
-      if (tinyMCE.activeEditor == null || tinyMCE.activeEditor.isHidden() != false) {
-        is_tinyMCE_active = false;
-      }
-    }
-    else {
-      is_tinyMCE_active = false;
-    }
-    return is_tinyMCE_active;
   }
   window.get_content_cursor = function(element, caret) {
     var lines = element.value.substr(0, this.selectionStart).split("\n");
@@ -217,6 +218,8 @@ tags = {};
       }
     });
     $('.CodeMirror').css('font-size', WPEPosts.fontSize);
+    $('.CodeMirror').css('top', $('#content').css('margin-top'));
+    $('.CodeMirror').css('margin-bottom', $('#content').css('margin-top'));
     if(activeLine) {
       var hlLine = wp_editor.addLineClass(0, activeLine);
     }

@@ -272,6 +272,7 @@ class WPEditor {
     wp_register_script('wp-editor-posts-jquery', WPEDITOR_URL . '/js/posts-jquery.js', false, WPEDITOR_VERSION_NUMBER, true);
     wp_register_script('fancybox', WPEDITOR_URL . '/extensions/fancybox/js/jquery.fancybox-1.3.4.pack.js', false, WPEDITOR_VERSION_NUMBER);
     wp_register_script('codemirror', WPEDITOR_URL . '/extensions/codemirror/js/codemirror.js', false, WPEDITOR_VERSION_NUMBER);
+    wp_register_script('attrchange', WPEDITOR_URL . '/extensions/attrchange/attrchange.js', false, WPEDITOR_VERSION_NUMBER);
     wp_register_script('codemirror_php', WPEDITOR_URL . '/extensions/codemirror/js/php.js', false, WPEDITOR_VERSION_NUMBER);
     wp_register_script('codemirror_javascript', WPEDITOR_URL . '/extensions/codemirror/js/javascript.js', false, WPEDITOR_VERSION_NUMBER);
     wp_register_script('codemirror_css', WPEDITOR_URL . '/extensions/codemirror/js/css.js', false, WPEDITOR_VERSION_NUMBER);

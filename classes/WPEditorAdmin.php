@@ -68,6 +68,7 @@ class WPEditorAdmin {
     wp_enqueue_script('codemirror_dialog');
     wp_enqueue_script('codemirror_search');
     wp_enqueue_script('codemirror_searchcursor');
+    wp_enqueue_script('attrchange');
   }
   
   public static function defaultStylesheetAndScript() {
