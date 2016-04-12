@@ -1,12 +1,12 @@
 <?php
   $tab = 'overview';
-  if(WPEditorSetting::getValue('settings_tab')) {
-    $tab = WPEditorSetting::getValue('settings_tab');
+  if(WPEditorSetting::get_value('settings_tab')) {
+    $tab = WPEditorSetting::get_value('settings_tab');
   }
-  if(!WPEditorSetting::getValue('run_overview')) {
+  if(!WPEditorSetting::get_value('run_overview')) {
     $tab = 'overview';
   }
-  WPEditorSetting::setValue('run_overview', 1);
+  WPEditorSetting::set_value('run_overview', 1);
   $success_message = '';
 ?>
 
@@ -45,8 +45,8 @@
                     <label for="replace_plugin_edit_links"><?php _e('Replace Default Plugin Edit Links:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="replace_plugin_edit_links" value="1" <?php echo (WPEditorSetting::getValue('replace_plugin_edit_links') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="replace_plugin_edit_links" value="0" <?php echo (WPEditorSetting::getValue('replace_plugin_edit_links') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="replace_plugin_edit_links" value="1" <?php echo (WPEditorSetting::get_value('replace_plugin_edit_links') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="replace_plugin_edit_links" value="0" <?php echo (WPEditorSetting::get_value('replace_plugin_edit_links') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will replace the default edit links on the Installed Plugins page with WP Editor links.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -64,8 +64,8 @@
                     <label for="hide_default_plugin_editor"><?php _e('Hide Default Plugin Editor:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="hide_default_plugin_editor" value="1" <?php echo (WPEditorSetting::getValue('hide_default_plugin_editor') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="hide_default_plugin_editor" value="0" <?php echo (WPEditorSetting::getValue('hide_default_plugin_editor') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="hide_default_plugin_editor" value="1" <?php echo (WPEditorSetting::get_value('hide_default_plugin_editor') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="hide_default_plugin_editor" value="0" <?php echo (WPEditorSetting::get_value('hide_default_plugin_editor') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will hide the default Edit submenu for the plugins page.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -74,8 +74,8 @@
                     <label for="hide_default_theme_editor"><?php _e('Hide Default Theme Editor:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="hide_default_theme_editor" value="1" <?php echo (WPEditorSetting::getValue('hide_default_theme_editor') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="hide_default_theme_editor" value="0" <?php echo (WPEditorSetting::getValue('hide_default_theme_editor') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="hide_default_theme_editor" value="1" <?php echo (WPEditorSetting::get_value('hide_default_theme_editor') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="hide_default_theme_editor" value="0" <?php echo (WPEditorSetting::get_value('hide_default_theme_editor') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will hide the default Edit submenu for the themes page.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -93,8 +93,8 @@
                     <label for="wpeditor_logging"><?php _e('Enable Logging:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="wpeditor_logging" value="1" <?php echo (WPEditorSetting::getValue('wpeditor_logging') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="wpeditor_logging" value="0" <?php echo (WPEditorSetting::getValue('wpeditor_logging') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="wpeditor_logging" value="1" <?php echo (WPEditorSetting::get_value('wpeditor_logging') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="wpeditor_logging" value="0" <?php echo (WPEditorSetting::get_value('wpeditor_logging') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable diagnostic logging on the site.  WARNING: This file grows quickly so please only enable if you are troubleshooting.<br />Default: No", 'wp-editor'); ?></p>
@@ -112,8 +112,8 @@
                     <label for="hide_wpeditor_menu"><?php _e('Hide WP Editor Icon:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="hide_wpeditor_menu" value="1" <?php echo (WPEditorSetting::getValue('hide_wpeditor_menu') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="hide_wpeditor_menu" value="0" <?php echo (WPEditorSetting::getValue('hide_wpeditor_menu') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="hide_wpeditor_menu" value="1" <?php echo (WPEditorSetting::get_value('hide_wpeditor_menu') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="hide_wpeditor_menu" value="0" <?php echo (WPEditorSetting::get_value('hide_wpeditor_menu') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("If set to yes, this will hide the WP Editor icon from the menu on the left. You will be able to access this settings page from the main Settings drop down instead.<br />Default: No", 'wp-editor'); ?></p>
@@ -146,8 +146,8 @@
                     <select id="theme_editor_theme" name="theme_editor_theme">
                       <?php
                       $theme = 'default';
-                      if(WPEditorSetting::getValue('theme_editor_theme')) {
-                        $theme = WPEditorSetting::getValue('theme_editor_theme');
+                      if(WPEditorSetting::get_value('theme_editor_theme')) {
+                        $theme = WPEditorSetting::get_value('theme_editor_theme');
                       }
                       ?>
                       <option value="default" <?php echo ($theme == 'default') ? 'selected="selected"' : '' ?>><?php _e('Default', 'wp-editor'); ?></option>
@@ -182,7 +182,7 @@
                   </li>
                   <li class="indent">
                     <?php
-                    $allowed_extensions = WPEditorSetting::getValue('theme_editor_allowed_extensions');
+                    $allowed_extensions = WPEditorSetting::get_value('theme_editor_allowed_extensions');
                     if($allowed_extensions) {
                       $allowed_extensions = explode('~', $allowed_extensions);
                     }
@@ -239,7 +239,7 @@
                     <label for="change_theme_editor_font_size"><?php _e('Change Font Size:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="change_theme_editor_font_size" value="<?php echo WPEditorSetting::getValue('change_theme_editor_font_size'); ?>" />
+                    <input class="small-text" name="change_theme_editor_font_size" value="<?php echo WPEditorSetting::get_value('change_theme_editor_font_size'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the font size in pixels for the theme editor.<br />Default: 12", 'wp-editor'); ?></p>
@@ -257,8 +257,8 @@
                     <label for="enable_theme_line_numbers"><?php _e('Enable Line Numbers:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="enable_theme_line_numbers" value="1" <?php echo (WPEditorSetting::getValue('enable_theme_line_numbers') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="enable_theme_line_numbers" value="0" <?php echo (WPEditorSetting::getValue('enable_theme_line_numbers') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="enable_theme_line_numbers" value="1" <?php echo (WPEditorSetting::get_value('enable_theme_line_numbers') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="enable_theme_line_numbers" value="0" <?php echo (WPEditorSetting::get_value('enable_theme_line_numbers') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable line numbers for the theme editor.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -276,8 +276,8 @@
                     <label for="enable_theme_line_wrapping"><?php _e('Enable Line Wrapping:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="enable_theme_line_wrapping" value="1" <?php echo (WPEditorSetting::getValue('enable_theme_line_wrapping') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="enable_theme_line_wrapping" value="0" <?php echo (WPEditorSetting::getValue('enable_theme_line_wrapping') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="enable_theme_line_wrapping" value="1" <?php echo (WPEditorSetting::get_value('enable_theme_line_wrapping') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="enable_theme_line_wrapping" value="0" <?php echo (WPEditorSetting::get_value('enable_theme_line_wrapping') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable line wrapping for the theme editor.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -295,8 +295,8 @@
                     <label for="enable_theme_active_line"><?php _e('Highlight Active Line:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="enable_theme_active_line" value="1" <?php echo (WPEditorSetting::getValue('enable_theme_active_line') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="enable_theme_active_line" value="0" <?php echo (WPEditorSetting::getValue('enable_theme_active_line') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="enable_theme_active_line" value="1" <?php echo (WPEditorSetting::get_value('enable_theme_active_line') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="enable_theme_active_line" value="0" <?php echo (WPEditorSetting::get_value('enable_theme_active_line') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable highlighting of the active line for the theme editor.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -314,7 +314,7 @@
                     <label for="theme_indent_unit"><?php _e('Indent Size:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="theme_indent_unit" value="<?php echo WPEditorSetting::getValue('theme_indent_unit'); ?>" />
+                    <input class="small-text" name="theme_indent_unit" value="<?php echo WPEditorSetting::get_value('theme_indent_unit'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the size of the indent.<br />Default: 2", 'wp-editor'); ?></p>
@@ -333,8 +333,8 @@
                   </li>
                   <li class="indent">
                     <select name="enable_theme_tab_characters">
-                      <option value="spaces"<?php echo WPEditorSetting::getValue('enable_theme_tab_characters') == 'spaces' ? ' selected="selected"' : ''; ?>><?php _e('Spaces', 'wp-editor'); ?></option>
-                      <option value="tabs"<?php echo WPEditorSetting::getValue('enable_theme_tab_characters') == 'tabs' ? ' selected="selected"' : ''; ?>><?php _e('Tabs', 'wp-editor'); ?></option>
+                      <option value="spaces"<?php echo WPEditorSetting::get_value('enable_theme_tab_characters') == 'spaces' ? ' selected="selected"' : ''; ?>><?php _e('Spaces', 'wp-editor'); ?></option>
+                      <option value="tabs"<?php echo WPEditorSetting::get_value('enable_theme_tab_characters') == 'tabs' ? ' selected="selected"' : ''; ?>><?php _e('Tabs', 'wp-editor'); ?></option>
                     </select>
                   </li>
                   <li class="indent description">
@@ -344,7 +344,7 @@
                     <label for="enable_theme_tab_size"><?php _e('Tab Size:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="enable_theme_tab_size" value="<?php echo WPEditorSetting::getValue('enable_theme_tab_size'); ?>" />
+                    <input class="small-text" name="enable_theme_tab_size" value="<?php echo WPEditorSetting::get_value('enable_theme_tab_size'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the tab size for the theme editor.<br />Default: 2", 'wp-editor'); ?></p>
@@ -362,7 +362,7 @@
                     <label for="enable_theme_editor_height"><?php _e('Editor Height:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="enable_theme_editor_height" value="<?php echo WPEditorSetting::getValue('enable_theme_editor_height'); ?>" />
+                    <input class="small-text" name="enable_theme_editor_height" value="<?php echo WPEditorSetting::get_value('enable_theme_editor_height'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the height in pixels for the theme editor.<br />Default: 450", 'wp-editor'); ?></p>
@@ -380,8 +380,8 @@
                     <label for="theme_file_upload"><?php _e('Enable File Upload:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="theme_file_upload" value="1" <?php echo (WPEditorSetting::getValue('theme_file_upload') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="theme_file_upload" value="0" <?php echo (WPEditorSetting::getValue('theme_file_upload') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="theme_file_upload" value="1" <?php echo (WPEditorSetting::get_value('theme_file_upload') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="theme_file_upload" value="0" <?php echo (WPEditorSetting::get_value('theme_file_upload') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable a file upload option for the theme editor.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -399,8 +399,8 @@
                     <label for="theme_create_new"><?php _e('Enable Creating Themes:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="theme_create_new" value="1" <?php echo (WPEditorSetting::getValue('theme_create_new') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="theme_create_new" value="0" <?php echo (WPEditorSetting::getValue('theme_create_new') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="theme_create_new" value="1" <?php echo (WPEditorSetting::get_value('theme_create_new') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="theme_create_new" value="0" <?php echo (WPEditorSetting::get_value('theme_create_new') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will allow you to create new themes within the Theme Editor.<br />Default: No", 'wp-editor'); ?></p>
@@ -433,8 +433,8 @@
                     <select id="plugin_editor_theme" name="plugin_editor_theme">
                       <?php
                       $theme = 'default';
-                      if(WPEditorSetting::getValue('plugin_editor_theme')) {
-                        $theme = WPEditorSetting::getValue('plugin_editor_theme');
+                      if(WPEditorSetting::get_value('plugin_editor_theme')) {
+                        $theme = WPEditorSetting::get_value('plugin_editor_theme');
                       }
                       ?>
                       <option value="default" <?php echo ($theme == 'default') ? 'selected="selected"' : '' ?>><?php _e('Default', 'wp-editor'); ?></option>
@@ -469,7 +469,7 @@
                   </li>
                   <li class="indent">
                     <?php
-                    $allowed_extensions = WPEditorSetting::getValue('plugin_editor_allowed_extensions');
+                    $allowed_extensions = WPEditorSetting::get_value('plugin_editor_allowed_extensions');
                     if($allowed_extensions) {
                       $allowed_extensions = explode('~', $allowed_extensions);
                     }
@@ -526,7 +526,7 @@
                     <label for="change_plugin_editor_font_size"><?php _e('Change Font Size:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="change_plugin_editor_font_size" value="<?php echo WPEditorSetting::getValue('change_plugin_editor_font_size'); ?>" />
+                    <input class="small-text" name="change_plugin_editor_font_size" value="<?php echo WPEditorSetting::get_value('change_plugin_editor_font_size'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the font size in pixels for the plugin editor.<br />Default: 12", 'wp-editor'); ?></p>
@@ -544,8 +544,8 @@
                     <label for="enable_plugin_line_numbers"><?php _e('Enable Line Numbers:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="enable_plugin_line_numbers" value="1" <?php echo (WPEditorSetting::getValue('enable_plugin_line_numbers') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="enable_plugin_line_numbers" value="0" <?php echo (WPEditorSetting::getValue('enable_plugin_line_numbers') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="enable_plugin_line_numbers" value="1" <?php echo (WPEditorSetting::get_value('enable_plugin_line_numbers') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="enable_plugin_line_numbers" value="0" <?php echo (WPEditorSetting::get_value('enable_plugin_line_numbers') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable line numbers for the plugin editor.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -563,8 +563,8 @@
                     <label for="enable_plugin_line_wrapping"><?php _e('Enable Line Wrapping:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="enable_plugin_line_wrapping" value="1" <?php echo (WPEditorSetting::getValue('enable_plugin_line_wrapping') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="enable_plugin_line_wrapping" value="0" <?php echo (WPEditorSetting::getValue('enable_plugin_line_wrapping') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="enable_plugin_line_wrapping" value="1" <?php echo (WPEditorSetting::get_value('enable_plugin_line_wrapping') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="enable_plugin_line_wrapping" value="0" <?php echo (WPEditorSetting::get_value('enable_plugin_line_wrapping') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable line wrapping for the plugin editor.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -582,8 +582,8 @@
                     <label for="enable_plugin_active_line"><?php _e('Highlight Active Line:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="enable_plugin_active_line" value="1" <?php echo (WPEditorSetting::getValue('enable_plugin_active_line') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="enable_plugin_active_line" value="0" <?php echo (WPEditorSetting::getValue('enable_plugin_active_line') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="enable_plugin_active_line" value="1" <?php echo (WPEditorSetting::get_value('enable_plugin_active_line') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="enable_plugin_active_line" value="0" <?php echo (WPEditorSetting::get_value('enable_plugin_active_line') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable highlighting of the active line for the plugin editor.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -601,7 +601,7 @@
                     <label for="plugin_indent_unit"><?php _e('Indent Size:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="plugin_indent_unit" value="<?php echo WPEditorSetting::getValue('plugin_indent_unit'); ?>" />
+                    <input class="small-text" name="plugin_indent_unit" value="<?php echo WPEditorSetting::get_value('plugin_indent_unit'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the size of the indent.<br />Default: 2", 'wp-editor'); ?></p>
@@ -620,8 +620,8 @@
                   </li>
                   <li class="indent">
                     <select name="enable_plugin_tab_characters">
-                      <option value="spaces"<?php echo WPEditorSetting::getValue('enable_plugin_tab_characters') == 'spaces' ? ' selected="selected"' : ''; ?>><?php _e('Spaces', 'wp-editor'); ?></option>
-                      <option value="tabs"<?php echo WPEditorSetting::getValue('enable_plugin_tab_characters') == 'tabs' ? ' selected="selected"' : ''; ?>><?php _e('Tabs', 'wp-editor'); ?></option>
+                      <option value="spaces"<?php echo WPEditorSetting::get_value('enable_plugin_tab_characters') == 'spaces' ? ' selected="selected"' : ''; ?>><?php _e('Spaces', 'wp-editor'); ?></option>
+                      <option value="tabs"<?php echo WPEditorSetting::get_value('enable_plugin_tab_characters') == 'tabs' ? ' selected="selected"' : ''; ?>><?php _e('Tabs', 'wp-editor'); ?></option>
                     </select>
                   </li>
                   <li class="indent description">
@@ -631,7 +631,7 @@
                     <label for="enable_plugin_tab_size"><?php _e('Tab Size:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="enable_plugin_tab_size" value="<?php echo WPEditorSetting::getValue('enable_plugin_tab_size'); ?>" />
+                    <input class="small-text" name="enable_plugin_tab_size" value="<?php echo WPEditorSetting::get_value('enable_plugin_tab_size'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the tab size for the plugin editor.<br />Default: 2", 'wp-editor'); ?></p>
@@ -649,7 +649,7 @@
                     <label for="enable_plugin_editor_height"><?php _e('Editor Height:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="enable_plugin_editor_height" value="<?php echo WPEditorSetting::getValue('enable_plugin_editor_height'); ?>" />
+                    <input class="small-text" name="enable_plugin_editor_height" value="<?php echo WPEditorSetting::get_value('enable_plugin_editor_height'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the height in pixels for the plugin editor.<br />Default: 450", 'wp-editor'); ?></p>
@@ -667,8 +667,8 @@
                     <label for="plugin_file_upload"><?php _e('Enable File Upload:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="plugin_file_upload" value="1" <?php echo (WPEditorSetting::getValue('plugin_file_upload') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="plugin_file_upload" value="0" <?php echo (WPEditorSetting::getValue('plugin_file_upload') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="plugin_file_upload" value="1" <?php echo (WPEditorSetting::get_value('plugin_file_upload') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="plugin_file_upload" value="0" <?php echo (WPEditorSetting::get_value('plugin_file_upload') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable a file upload option for the plugin editor.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -686,8 +686,8 @@
                     <label for="plugin_create_new"><?php _e('Enable Creating Plugins:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="plugin_create_new" value="1" <?php echo (WPEditorSetting::getValue('plugin_create_new') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="plugin_create_new" value="0" <?php echo (WPEditorSetting::getValue('plugin_create_new') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="plugin_create_new" value="1" <?php echo (WPEditorSetting::get_value('plugin_create_new') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="plugin_create_new" value="0" <?php echo (WPEditorSetting::get_value('plugin_create_new') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will allow you to create new plugins within the Plugin Editor.<br />Default: No", 'wp-editor'); ?></p>
@@ -719,8 +719,8 @@
                     <label for="enable_post_editor"><?php _e('Enable the Posts Editor:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="enable_post_editor" value="1" <?php echo (WPEditorSetting::getValue('enable_post_editor') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="enable_post_editor" value="0" <?php echo (WPEditorSetting::getValue('enable_post_editor') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="enable_post_editor" value="1" <?php echo (WPEditorSetting::get_value('enable_post_editor') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="enable_post_editor" value="0" <?php echo (WPEditorSetting::get_value('enable_post_editor') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable/disable the post editor.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -739,8 +739,8 @@
                     <select id="post_editor_theme" name="post_editor_theme">
                       <?php
                       $theme = 'default';
-                      if(WPEditorSetting::getValue('post_editor_theme')) {
-                        $theme = WPEditorSetting::getValue('post_editor_theme');
+                      if(WPEditorSetting::get_value('post_editor_theme')) {
+                        $theme = WPEditorSetting::get_value('post_editor_theme');
                       }
                       ?>
                       <option value="default" <?php echo ($theme == 'default') ? 'selected="selected"' : '' ?>><?php _e('Default', 'wp-editor'); ?></option>
@@ -774,7 +774,7 @@
                     <label for="change_post_editor_font_size"><?php _e('Change Font Size:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="change_post_editor_font_size" value="<?php echo WPEditorSetting::getValue('change_post_editor_font_size'); ?>" />
+                    <input class="small-text" name="change_post_editor_font_size" value="<?php echo WPEditorSetting::get_value('change_post_editor_font_size'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the font size in pixels for the post editor.<br />Default: 12", 'wp-editor'); ?></p>
@@ -792,8 +792,8 @@
                     <label for="enable_post_line_numbers"><?php _e('Enable Line Numbers:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="enable_post_line_numbers" value="1" <?php echo (WPEditorSetting::getValue('enable_post_line_numbers') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="enable_post_line_numbers" value="0" <?php echo (WPEditorSetting::getValue('enable_post_line_numbers') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="enable_post_line_numbers" value="1" <?php echo (WPEditorSetting::get_value('enable_post_line_numbers') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="enable_post_line_numbers" value="0" <?php echo (WPEditorSetting::get_value('enable_post_line_numbers') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable line numbers for the post editor.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -811,8 +811,8 @@
                     <label for="enable_post_line_wrapping"><?php _e('Enable Line Wrapping:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="enable_post_line_wrapping" value="1" <?php echo (WPEditorSetting::getValue('enable_post_line_wrapping') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="enable_post_line_wrapping" value="0" <?php echo (WPEditorSetting::getValue('enable_post_line_wrapping') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="enable_post_line_wrapping" value="1" <?php echo (WPEditorSetting::get_value('enable_post_line_wrapping') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="enable_post_line_wrapping" value="0" <?php echo (WPEditorSetting::get_value('enable_post_line_wrapping') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable line wrapping for the post editor.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -830,8 +830,8 @@
                     <label for="enable_post_active_line"><?php _e('Highlight Active Line:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input type="radio" name="enable_post_active_line" value="1" <?php echo (WPEditorSetting::getValue('enable_post_active_line') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
-                    <input type="radio" name="enable_post_active_line" value="0" <?php echo (WPEditorSetting::getValue('enable_post_active_line') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
+                    <input type="radio" name="enable_post_active_line" value="1" <?php echo (WPEditorSetting::get_value('enable_post_active_line') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wp-editor'); ?>
+                    <input type="radio" name="enable_post_active_line" value="0" <?php echo (WPEditorSetting::get_value('enable_post_active_line') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wp-editor'); ?>
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable highlighting of the active line for the post editor.<br />Default: Yes", 'wp-editor'); ?></p>
@@ -849,7 +849,7 @@
                     <label for="post_indent_unit"><?php _e('Indent Size:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="post_indent_unit" value="<?php echo WPEditorSetting::getValue('post_indent_unit'); ?>" />
+                    <input class="small-text" name="post_indent_unit" value="<?php echo WPEditorSetting::get_value('post_indent_unit'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the size of the indent.<br />Default: 2", 'wp-editor'); ?></p>
@@ -868,8 +868,8 @@
                   </li>
                   <li class="indent">
                     <select name="enable_post_tab_characters">
-                      <option value="spaces"<?php echo WPEditorSetting::getValue('enable_post_tab_characters') == 'spaces' ? ' selected="selected"' : ''; ?>><?php _e('Spaces', 'wp-editor'); ?></option>
-                      <option value="tabs"<?php echo WPEditorSetting::getValue('enable_post_tab_characters') == 'tabs' ? ' selected="selected"' : ''; ?>><?php _e('Tabs', 'wp-editor'); ?></option>
+                      <option value="spaces"<?php echo WPEditorSetting::get_value('enable_post_tab_characters') == 'spaces' ? ' selected="selected"' : ''; ?>><?php _e('Spaces', 'wp-editor'); ?></option>
+                      <option value="tabs"<?php echo WPEditorSetting::get_value('enable_post_tab_characters') == 'tabs' ? ' selected="selected"' : ''; ?>><?php _e('Tabs', 'wp-editor'); ?></option>
                     </select>
                   </li>
                   <li class="indent description">
@@ -879,7 +879,7 @@
                     <label for="enable_post_tab_size"><?php _e('Tab Size:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="enable_post_tab_size" value="<?php echo WPEditorSetting::getValue('enable_post_tab_size'); ?>" />
+                    <input class="small-text" name="enable_post_tab_size" value="<?php echo WPEditorSetting::get_value('enable_post_tab_size'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the tab size for the post editor.<br />Default: 2", 'wp-editor'); ?></p>
@@ -897,7 +897,7 @@
                     <label for="enable_post_editor_height"><?php _e('Editor Height:', 'wp-editor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="enable_post_editor_height" value="<?php echo WPEditorSetting::getValue('enable_post_editor_height'); ?>" />
+                    <input class="small-text" name="enable_post_editor_height" value="<?php echo WPEditorSetting::get_value('enable_post_editor_height'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the height in pixels for the post editor.<br />Default: 450", 'wp-editor'); ?></p>
