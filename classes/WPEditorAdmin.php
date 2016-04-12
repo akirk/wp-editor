@@ -5,13 +5,14 @@ class WPEditorAdmin {
     $page_roles = WPEditorSetting::get_value( 'admin_page_roles' );
     $page_roles = unserialize( $page_roles);
     if ( WPEditorSetting::get_value( 'hide_wpeditor_menu' ) ) {
-      $settings = add_submenu_page( 'options-general.php', __( 'WP Editor Settings', 'wp-editor' ), __( 'WP Editor', 'wp-editor' ), $page_roles['settings'], 'wpeditor_admin', array( 'WPEditorAdmin', 'add_settings_page' ) );
+      $settings = add_submenu_page( 'options-general.php', __( 'WP Editor Settings', 'wp-editor' ), __( 'WP Editor', 'wp-editor' ), $page_roles['settings'], 'wpeditor_admin', array( 'WPEditorAdmin', 'OLD_add_settings_page' ) );
     }
     else {
       $icon = WPEDITOR_URL . '/images/wpeditor_logo_16.png';
-      $settings = add_menu_page( __( 'WP Editor Settings', 'wp-editor' ), __( 'WP Editor', 'wp-editor' ), $page_roles['settings'], 'wpeditor_admin', array( 'WPEditorAdmin', 'add_settings_page' ), $icon );
+      $settings = add_menu_page( __( 'WP Editor Settings', 'wp-editor' ), __( 'WP Editor', 'wp-editor' ), $page_roles['settings'], 'wpeditor_admin', array( 'WPEditorAdmin', 'OLD_add_settings_page' ), $icon );
     }
-    //add_submenu_page( 'wpeditor_admin', __( 'Sub Menu', 'wp-editor' ), __( 'Orders', 'wp-editor' ), $page_roles['orders'], 'wpeditor_admin', array( 'WPEditorAdmin', 'subMenuPage' ) );
+
+    $settings = add_submenu_page( 'options-general.php', __( 'WP Editor', 'wp-editor' ), __( 'WP Editor', 'wp-editor' ), $page_roles['settings'], 'wpeditor_settings', array( 'WPEditorAdmin', 'add_settings_page' ) );
     
     add_action( 'admin_print_styles-' . $settings, array( 'WPEditorAdmin', 'default_stylesheet_and_script' ) );
   }
@@ -45,6 +46,11 @@ class WPEditorAdmin {
     }
   }
   
+  public static function OLD_add_settings_page() {
+    $view = WPEditor::get_view( 'views/OLDsettings.php' );
+    echo $view;
+  }
+
   public static function add_settings_page() {
     $view = WPEditor::get_view( 'views/settings.php' );
     echo $view;
