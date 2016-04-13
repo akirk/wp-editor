@@ -176,6 +176,8 @@ class WPEditor {
       add_action( 'admin_init', array( $this, 'register_default_stylesheet' ) );
       // Load default script
       add_action( 'admin_init', array( $this, 'register_default_script' ) );
+      // Register the default settings
+      add_action( 'admin_init', array( 'WPEditorSetting', 'register_settings' ) );
       
       // Remove default editor submenus
       add_action( 'admin_menu', array( 'WPEditorAdmin', 'remove_default_editor_menus' ) );

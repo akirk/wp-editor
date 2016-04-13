@@ -17,7 +17,7 @@ $all_settings = WPEditorSetting::get_registered_settings();
 
 // Let's verify we have a 'main' section to show
 ob_start();
-do_settings_sections( 'edd_settings_' . $active_tab . '_main' );
+do_settings_sections( 'wpe_settings_' . $active_tab . '_main' );
 $has_main_settings = strlen( ob_get_contents() ) > 0;
 ob_end_clean();
 
@@ -37,7 +37,7 @@ if ( false === $has_main_settings ) {
 <div class="wrap">
   <h1 class="nav-tab-wrapper">
     <?php
-    /*foreach( WPEditorSetting::get_settings_tabs() as $tab_id => $tab_name ) {
+    foreach( WPEditorSetting::get_settings_tabs() as $tab_id => $tab_name ) {
 
       $tab_url = add_query_arg( array(
         'settings-updated' => false,
@@ -81,28 +81,28 @@ if ( false === $has_main_settings ) {
       echo '</li>';
     }
     echo '</ul></div>';
-  }*/
+  }
   ?>
   <div id="tab_container">
     <form method="post" action="options.php">
       <table class="form-table">
       <?php
 
-      settings_fields( 'wpeditor_settings' );
+      settings_fields( 'wpe_settings' );
 
       if ( 'main' === $section ) {
-        do_action( 'wpeditor_settings_tab_top', $active_tab );
+        do_action( 'wpe_settings_tab_top', $active_tab );
       }
 
-      do_action( 'wpeditor_settings_tab_top_' . $active_tab . '_' . $section );
+      do_action( 'wpe_settings_tab_top_' . $active_tab . '_' . $section );
 
-      do_settings_sections( 'wpeditor_settings_' . $active_tab . '_' . $section );
+      do_settings_sections( 'wpe_settings_' . $active_tab . '_' . $section );
 
-      do_action( 'wpeditor_settings_tab_bottom_' . $active_tab . '_' . $section  );
+      do_action( 'wpe_settings_tab_bottom_' . $active_tab . '_' . $section  );
 
       // For backwards compatibility
       if ( 'main' === $section ) {
-        do_action( 'wpeditor_settings_tab_bottom', $active_tab );
+        do_action( 'wpe_settings_tab_bottom', $active_tab );
       }
 
       ?>

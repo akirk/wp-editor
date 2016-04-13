@@ -4,6 +4,9 @@ class WPEditorAdmin {
   public static function build_admin_menu() {
     $page_roles = WPEditorSetting::get_value( 'admin_page_roles' );
     $page_roles = unserialize( $page_roles);
+
+    $settings = add_submenu_page( 'options-general.php', __( 'WP Editor', 'wp-editor' ), __( 'WP Editor', 'wp-editor' ), $page_roles['settings'], 'wpeditor_settings', array( 'WPEditorAdmin', 'add_settings_page' ) );
+
     if ( WPEditorSetting::get_value( 'hide_wpeditor_menu' ) ) {
       $settings = add_submenu_page( 'options-general.php', __( 'WP Editor Settings', 'wp-editor' ), __( 'WP Editor', 'wp-editor' ), $page_roles['settings'], 'wpeditor_admin', array( 'WPEditorAdmin', 'OLD_add_settings_page' ) );
     }
@@ -12,8 +15,6 @@ class WPEditorAdmin {
       $settings = add_menu_page( __( 'WP Editor Settings', 'wp-editor' ), __( 'WP Editor', 'wp-editor' ), $page_roles['settings'], 'wpeditor_admin', array( 'WPEditorAdmin', 'OLD_add_settings_page' ), $icon );
     }
 
-    $settings = add_submenu_page( 'options-general.php', __( 'WP Editor', 'wp-editor' ), __( 'WP Editor', 'wp-editor' ), $page_roles['settings'], 'wpeditor_settings', array( 'WPEditorAdmin', 'add_settings_page' ) );
-    
     add_action( 'admin_print_styles-' . $settings, array( 'WPEditorAdmin', 'default_stylesheet_and_script' ) );
   }
   
