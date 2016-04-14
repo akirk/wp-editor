@@ -235,6 +235,7 @@ class WPEditor {
     wp_register_style( 'codemirror', WPEDITOR_URL . '/extensions/codemirror/codemirror.css', false, WPEDITOR_VERSION_NUMBER );
     wp_register_style( 'codemirror_dialog', WPEDITOR_URL . '/extensions/codemirror/dialog.css', false, WPEDITOR_VERSION_NUMBER );
     wp_register_style( 'codemirror_themes', WPEDITOR_URL . '/extensions/codemirror/themes/themes.css', false, WPEDITOR_VERSION_NUMBER );
+    wp_register_style( 'chosen', WPEDITOR_URL . '/extensions/chosen/css/chosen.min.css', false, WPEDITOR_VERSION_NUMBER );
   }
   
   public function register_default_script() {
@@ -276,7 +277,7 @@ class WPEditor {
     wp_register_script( 'nivo-lightbox', WPEDITOR_URL . 'extensions/nivo-lightbox/js/nivo-lightbox.min.js', array( 'jquery' ), WPEDITOR_VERSION_NUMBER );
     wp_register_script( 'attrchange', WPEDITOR_URL . 'extensions/attrchange/attrchange.js', false, WPEDITOR_VERSION_NUMBER );
 
-    if ( ! Wp_script_is( 'codemirror', 'enqueued' ) ) {
+    if ( ! wp_script_is( 'codemirror', 'enqueued' ) ) {
       wp_register_script( 'codemirror', WPEDITOR_URL . 'extensions/codemirror/js/codemirror.js', false, WPEDITOR_VERSION_NUMBER );
     }
     wp_register_script( 'codemirror_php', WPEDITOR_URL . 'extensions/codemirror/js/php.js', false, WPEDITOR_VERSION_NUMBER );
@@ -289,6 +290,8 @@ class WPEditor {
     wp_register_script( 'codemirror_searchcursor', WPEDITOR_URL . 'extensions/codemirror/js/searchcursor.js', false, WPEDITOR_VERSION_NUMBER );
     wp_register_script( 'codemirror_mustache', WPEDITOR_URL . 'extensions/codemirror/js/mustache.js', false, WPEDITOR_VERSION_NUMBER );
     //wp_register_script( 'codemirror_foldcode', WPEDITOR_URL . 'extensions/codemirror/js/foldcode.js' );
+
+    wp_register_script( 'chosen', WPEDITOR_URL . 'extensions/chosen/js/chosen.jquery.min.js', array( 'jquery' ), WPEDITOR_VERSION_NUMBER );
   }
   
   public static function get_view( $filename, $data=null ) {

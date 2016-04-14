@@ -7,6 +7,8 @@ class WPEditorAdmin {
 
     $settings = add_submenu_page( 'options-general.php', __( 'WP Editor', 'wp-editor' ), __( 'WP Editor', 'wp-editor' ), $page_roles['settings'], 'wpeditor_settings', array( 'WPEditorAdmin', 'add_settings_page' ) );
 
+    add_action( 'admin_print_styles-' . $settings, array( 'WPEditorAdmin', 'settings_styles_and_scripts' ) );
+
     if ( WPEditorSetting::get_value( 'hide_wpeditor_menu' ) ) {
       $settings = add_submenu_page( 'options-general.php', __( 'WP Editor Settings', 'wp-editor' ), __( 'WP Editor', 'wp-editor' ), $page_roles['settings'], 'wpeditor_admin', array( 'WPEditorAdmin', 'OLD_add_settings_page' ) );
     }
@@ -66,6 +68,8 @@ class WPEditorAdmin {
     wp_enqueue_style( 'codemirror' );
     wp_enqueue_style( 'codemirror_dialog' );
     wp_enqueue_style( 'codemirror_themes' );
+    wp_enqueue_style( 'chosen' );
+
     if ( ! wp_script_is( 'codemirror', 'enqueued' ) ) {
       wp_enqueue_script( 'codemirror' );
     }
@@ -79,11 +83,17 @@ class WPEditorAdmin {
     wp_enqueue_script( 'codemirror_search' );
     wp_enqueue_script( 'codemirror_searchcursor' );
     wp_enqueue_script( 'attrchange' );
+    wp_enqueue_script( 'chosen' );
   }
   
   public static function default_stylesheet_and_script() {
     wp_enqueue_style( 'wpeditor' );
     wp_enqueue_script( 'wpeditor' );
+  }
+
+  public static function settings_styles_and_scripts() {
+    wp_enqueue_style( 'chosen' );
+    wp_enqueue_script( 'chosen' );
   }
   
   public static function remove_default_editor_menus() {

@@ -71,7 +71,7 @@ class WPEditorSetting {
           add_settings_field(
             'wpe_settings[' . $option['id'] . ']',
             $name,
-            function_exists( 'wpe_' . $option['type'] . '_callback' ) ? 'wpe_' . $option['type'] . '_callback' : array( __CLASS__, 'missing_callback' ),
+            method_exists( __CLASS__, 'wpe_' . $option['type'] . '_callback' ) ? array( __CLASS__, 'wpe_' . $option['type'] . '_callback' ) : array( __CLASS__, 'missing_callback' ),
             'wpe_settings_' . $tab . '_' . $section,
             'wpe_settings_' . $tab . '_' . $section,
             array(
@@ -119,11 +119,29 @@ class WPEditorSetting {
       'general' => apply_filters( 'wpe_settings_general',
         array(
           'main' => array(
-            'test' => array(
-              'id'   => 'test_main',
-              'name' => '<h3>' . __( 'Test Main', 'wp-editor' ) . '</h3>',
-              'desc' => '',
-              'type' => 'header',
+            'allowed_extensions' => array(
+              'id'      => 'allowed_extensions',
+              'name'    => __( 'Allowed Extensions', 'wp-editor' ),
+              'desc'    => __( 'Select the extensions you want to enable for the Theme and Plugin editors.', 'wp-editor' ),
+              'type'    => 'multiselect',
+              'optons'  => apply_filters( 'allowed_extensions', array(
+                'php'   => '.php',
+                'js'    => '.js',
+                'css'   => '.css',
+                'scss'  => '.scss',
+                'txt'   => '.txt',
+                'htm'   => '.htm',
+                'html'  => '.html',
+                'jpg'   => '.jpg',
+                'jpeg'  => '.jpeg',
+                'png'   => '.png',
+                'gif'   => '.gif',
+                'sql'   => '.sql',
+                'po'    => '.po',
+                'pot'   => '.pot',
+                'less'  => '.less',
+                'xml'   => '.xml'
+              ) )
             ),
           ),
           'codemirror' => array(
@@ -201,7 +219,7 @@ class WPEditorSetting {
 
     $sections = array(
       'general'       => apply_filters( 'wpe_settings_sections_general', array(
-        'main'        => __( 'General Settings', 'wp-editor' ),
+        'main'        => __( 'Main', 'wp-editor' ),
         'codemirror'  => __( 'Codemirror', 'wp-editor' ),
       ) ),
       'theme_editor'  => apply_filters( 'wpe_settings_sections_theme_editor', array(
@@ -223,11 +241,20 @@ class WPEditorSetting {
     return $sections;
   }
 
-  public static function missing_callback($args) {
+  public static function missing_callback( $args ) {
     printf(
       __( 'The callback function used for the %s setting is missing.', 'easy-digital-downloads' ),
       '<strong>' . $args['id'] . '</strong>'
     );
+  }
+
+  public static function wpe_multiselect_callback( $args ) {
+    global $wpe_options; //need to set this up
+
+    ob_start(); ?>
+      
+
+    <?php echo ob_get_clean();
   }
   
   public static function set_value( $key, $value ) {
