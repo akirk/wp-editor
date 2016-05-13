@@ -16,7 +16,7 @@ class WPEditorPosts {
         'enterImgDescription' => __( 'Enter a description of the image:', 'wp-editor' ),
         'lookupWord' => __( 'Enter a word to look up:', 'wp-editor' ),
         'tabSize' => WPEditorSetting::get_value( 'enable_post_tab_size' ) ? WPEditorSetting::get_value( 'enable_post_tab_size' ) : 4,
-        'indentWithTabs' => WPEditorSetting::get_value( 'enable_post_tab_size' ) == 'tabs' ? true : false,
+        'indentWithTabs' => WPEditorSetting::get_value( 'enable_post_tab_characters' ) == 'tabs' ? true : false,
         'indentUnit' => WPEditorSetting::get_value( 'post_indent_unit' ) == '' ? 2 : WPEditorSetting::get_value( 'post_indent_unit' ),
         'editorHeight' => WPEditorSetting::get_value( 'enable_post_editor_height' ) ? WPEditorSetting::get_value( 'enable_post_editor_height' ) : false,
         'fontSize' => WPEditorSetting::get_value("change_post_editor_font_size") ? WPEditorSetting::get_value("change_post_editor_font_size") . "px" : "12px",

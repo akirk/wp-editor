@@ -180,7 +180,7 @@ tags = {};
       lineNumbers: WPEPosts.lineNumbers,
       lineWrapping: WPEPosts.lineWrapping,
       indentWithTabs: WPEPosts.indentWithTabs,
-      indentSize: WPEPosts.indentSize,
+      indentUnit: WPEPosts.indentUnit,
       tabSize: WPEPosts.tabSize,
       onCursorActivity: function() {
         if(activeLine) {
