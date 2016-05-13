@@ -67,6 +67,7 @@ class WPEditorAdmin {
     wp_enqueue_script( 'nivo-lightbox' );
     wp_enqueue_style( 'codemirror' );
     wp_enqueue_style( 'codemirror_dialog' );
+    wp_enqueue_style( 'codemirror_fullscreen' );
     wp_enqueue_style( 'codemirror_themes' );
     wp_enqueue_style( 'chosen' );
 
@@ -74,6 +75,7 @@ class WPEditorAdmin {
       wp_enqueue_script( 'codemirror' );
     }
     wp_enqueue_script( 'codemirror_mustache' );
+    wp_enqueue_script( 'codemirror_fullscreen' );
     wp_enqueue_script( 'codemirror_php' );
     wp_enqueue_script( 'codemirror_javascript' );
     wp_enqueue_script( 'codemirror_css' );

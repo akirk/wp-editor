@@ -375,3 +375,9 @@ a.donate, a.support {
   background-image: -webkit-linear-gradient(bottom, #e3e3e3, #fff);
   background-image: linear-gradient(to top, #e3e3e3, #fff);
 }
+.qt-fullscreen {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px 5px 0 0;
+}

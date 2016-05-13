@@ -36,31 +36,6 @@ function checkExtension(extension) {
 	}
 	return ext;
 }
-function toggleFullscreenEditing() {
-	$jq = jQuery.noConflict();
-	var editorDiv = $jq('.CodeMirror');
-	if(!editorDiv.hasClass('CodeMirror-fullscreen')) {
-		toggleFullscreenEditing.beforeFullscreen = { 
-			height: editorDiv.height(),
-			scrollHeight: editorDiv.height() - 33,
-			width: editorDiv.width() 
-		}
-		editorDiv.addClass('CodeMirror-fullscreen');
-		editorDiv.height('100%');
-		$jq('.CodeMirror-scroll').height(editorDiv.height() - 30);
-		editorDiv.width('100%');
-		$jq('#wpe_qt_content_save').show();
-		editor.refresh();
-	}
-	else {
-		editorDiv.removeClass('CodeMirror-fullscreen');
-		editorDiv.height(toggleFullscreenEditing.beforeFullscreen.height);
-		$jq('.CodeMirror-scroll').height(toggleFullscreenEditing.beforeFullscreen.scrollHeight);
-		editorDiv.width('100%');
-		$jq('#wpe_qt_content_save').hide();
-		editor.refresh();
-	}
-}
 
 (function($){
 	var c = function(){
@@ -121,7 +96,7 @@ function toggleFullscreenEditing() {
 				else if ( type == 'plugin' ) {
 					data.wp_editor_ajax_nonce_ajax_folders_plugins = WPE.wp_editor_ajax_nonce_ajax_folders_plugins;
 				}
-				console.log(data);
+				
 				newElement.addClass(ajaxObject.options.loading),
 				$.post(
 					ajaxObject.options.url, data, function(result){

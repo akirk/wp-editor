@@ -232,8 +232,9 @@ class WPEditor {
 		wp_register_style( 'wpeditor', WPEDITOR_URL . '/wpeditor.css', false, WPEDITOR_VERSION_NUMBER );
 		wp_register_style( 'nivo-lightbox', WPEDITOR_URL . '/extensions/nivo-lightbox/css/nivo-lightbox.css', false, WPEDITOR_VERSION_NUMBER );
 		wp_register_style( 'nivo-lightbox-default', WPEDITOR_URL . '/extensions/nivo-lightbox/themes/default/default.css', array( 'nivo-lightbox' ), WPEDITOR_VERSION_NUMBER );
-		wp_register_style( 'codemirror', WPEDITOR_URL . '/extensions/codemirror/codemirror.css', false, WPEDITOR_VERSION_NUMBER );
-		wp_register_style( 'codemirror_dialog', WPEDITOR_URL . '/extensions/codemirror/dialog.css', false, WPEDITOR_VERSION_NUMBER );
+		wp_register_style( 'codemirror', WPEDITOR_URL . '/extensions/codemirror/css/codemirror.css', false, WPEDITOR_VERSION_NUMBER );
+		wp_register_style( 'codemirror_dialog', WPEDITOR_URL . '/extensions/codemirror/css/dialog.css', false, WPEDITOR_VERSION_NUMBER );
+		wp_register_style( 'codemirror_fullscreen', WPEDITOR_URL . '/extensions/codemirror/css/fullscreen.css', false, WPEDITOR_VERSION_NUMBER );
 		wp_register_style( 'codemirror_themes', WPEDITOR_URL . '/extensions/codemirror/themes/themes.css', false, WPEDITOR_VERSION_NUMBER );
 		wp_register_style( 'chosen', WPEDITOR_URL . '/extensions/chosen/css/chosen.min.css', false, WPEDITOR_VERSION_NUMBER );
 	}
@@ -295,6 +296,7 @@ class WPEditor {
 		wp_register_script( 'codemirror_search', WPEDITOR_URL . 'extensions/codemirror/js/search.js', false, WPEDITOR_VERSION_NUMBER );
 		wp_register_script( 'codemirror_searchcursor', WPEDITOR_URL . 'extensions/codemirror/js/searchcursor.js', false, WPEDITOR_VERSION_NUMBER );
 		wp_register_script( 'codemirror_mustache', WPEDITOR_URL . 'extensions/codemirror/js/mustache.js', false, WPEDITOR_VERSION_NUMBER );
+		wp_register_script( 'codemirror_fullscreen', WPEDITOR_URL . 'extensions/codemirror/js/fullscreen.js', false, WPEDITOR_VERSION_NUMBER );
 		//wp_register_script( 'codemirror_foldcode', WPEDITOR_URL . 'extensions/codemirror/js/foldcode.js' );
 
 		wp_register_script( 'chosen', WPEDITOR_URL . 'extensions/chosen/js/chosen.jquery.min.js', array( 'jquery' ), WPEDITOR_VERSION_NUMBER );

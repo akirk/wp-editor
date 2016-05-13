@@ -224,7 +224,7 @@ function edButton(id, display, tagStart, tagEnd, access) {
       var cursor = wp_editor.getCursor();
       window.set_content_cursor(canvas, cursor);
       t.theButtons[i].callback.call(t.theButtons[i], target, canvas, t);
-      if(t.theButtons[i].id !== 'close' && t.theButtons[i].id !== 'img') {
+      if(t.theButtons[i].id !== 'close' && t.theButtons[i].id !== 'img' && t.theButtons[i].id !== 'fullscreen' && t.theButtons[i].id !== 'dfw') {
         var l = t.theButtons[i].tagStart.length, lines = t.theButtons[i].tagStart.substr(0, this.selectionStart).split("\n");
         if(t.theButtons[i].id !== 'more' && t.theButtons[i].isOpen(t) === false) {
           l = t.theButtons[i].tagEnd.length;

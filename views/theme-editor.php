@@ -298,7 +298,7 @@
 			<?php if ( WPEditorSetting::get_value( 'enable_theme_active_line' ) ): ?>
 				var activeLine = 'activeline-' + theme;
 			<?php endif; ?>
-			editor = CodeMirror.fromTextArea( document.getElementById( 'new-content' ), {
+			wp_editor = CodeMirror.fromTextArea( document.getElementById( 'new-content' ), {
 				mode: mode,
 				theme: theme,
 				<?php if ( WPEditorSetting::get_value( 'enable_theme_line_numbers' ) ): ?>
@@ -318,21 +318,25 @@
 				<?php endif; ?>
 				onCursorActivity: function() {
 					if ( activeLine ) {
-						editor.addLineClass(hlLine, null, null );
-						hlLine = editor.addLineClass(editor.getCursor().line, null, activeLine );
+						wp_editor.addLineClass(hlLine, null, null );
+						hlLine = wp_editor.addLineClass(wp_editor.getCursor().line, null, activeLine );
 					}
 				},
 				onChange: function() {
 					changeTrue();
 				},
 				extraKeys: {
-					'F11': toggleFullscreenEditing, 
-					'Esc': toggleFullscreenEditing
-				} // set fullscreen options here
+					"F11": function(cm) {
+						cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+					},
+					"Esc": function(cm) {
+						if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+					}
+				}
 			});
 			$jq( '.CodeMirror' ).css( 'font-size', '<?php echo WPEditorSetting::get_value("change_theme_editor_font_size") ? WPEditorSetting::get_value("change_theme_editor_font_size") . "px" : "12px"; ?>' );
 			if ( activeLine ) {
-				var hlLine = editor.addLineClass(0, activeLine );
+				var hlLine = wp_editor.addLineClass(0, activeLine );
 			}
 			<?php if ( WPEditorSetting::get_value( 'enable_theme_editor_height' ) ): ?>
 				$jq = jQuery.noConflict();
@@ -357,42 +361,42 @@
 					'</div>'
 				);
 				$jq( '.CodeMirror-scroll' ).height( $jq( '.CodeMirror-scroll' ).height() - 33);
-				editor.focus();
+				wp_editor.focus();
 			}
 			$jq( '#theme_fullscreen' ).on("click", function() {
 				toggleFullscreenEditing();
-				editor.focus();
+				wp_editor.focus();
 			})
 			$jq( '#theme_save' ).on("click", function() {
 				$jq( '.ajax-editor-update' ).submit();
-				editor.focus();
+				wp_editor.focus();
 			})
 			$jq( '#theme_undo' ).on("click", function() {
-				editor.undo();
-				editor.focus();
+				wp_editor.undo();
+				wp_editor.focus();
 			})
 			$jq( '#theme_redo' ).on("click", function() {
-				editor.redo();
-				editor.focus();
+				wp_editor.redo();
+				wp_editor.focus();
 			})
 			$jq( '#theme_search' ).on("click", function() {
-				CodeMirror.commands.find(editor);
+				CodeMirror.commands.find(wp_editor);
 				return false;
 			})
 			$jq( '#theme_find_next' ).on("click", function() {
-				CodeMirror.commands.findNext(editor);
+				CodeMirror.commands.findNext(wp_editor);
 				return false;
 			})
 			$jq( '#theme_find_prev' ).on("click", function() {
-				CodeMirror.commands.findPrev(editor);
+				CodeMirror.commands.findPrev(wp_editor);
 				return false;
 			})
 			$jq( '#theme_replace' ).on("click", function() {
-				CodeMirror.commands.replace(editor);
+				CodeMirror.commands.replace(wp_editor);
 				return false;
 			})
 			$jq( '#theme_replace_all' ).on("click", function() {
-				CodeMirror.commands.replaceAll(editor);
+				CodeMirror.commands.replaceAll(wp_editor);
 				return false;
 			})
 		}
