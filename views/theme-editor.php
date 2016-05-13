@@ -364,7 +364,12 @@
 				wp_editor.focus();
 			}
 			$jq( '#theme_fullscreen' ).on("click", function() {
-				toggleFullscreenEditing();
+				if (wp_editor.getOption("fullScreen")) {
+					wp_editor.setOption("fullScreen", false);
+				}
+				else {
+					wp_editor.setOption("fullScreen", true);
+				}
 				wp_editor.focus();
 			})
 			$jq( '#theme_save' ).on("click", function() {
