@@ -120,7 +120,7 @@ function checkExtension(extension) {
 									$('div.writable-error').hide();
 									$('.writable_status').html('Editing');
 								}
-								editor.toTextArea();
+								wp_editor.toTextArea();
 								$('#new-content').val(result.content);
 								$('#file').val(result.file);
 								$('#path').val(result.path);
@@ -255,7 +255,7 @@ function checkExtension(extension) {
 		});
 		
 		$('.ajax-editor-update').submit(function() {
-			editor.save();
+			wp_editor.save();
 
 			var data = {
 				action: 'save_files',
