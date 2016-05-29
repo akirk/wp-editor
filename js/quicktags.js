@@ -425,6 +425,12 @@ function edButton(id, display, tagStart, tagEnd, access) {
       return false;
     }
 
+    // WP Editor
+    wp_editor.save();
+    var cursor = wp_editor.getCursor();
+    window.set_content_cursor(canvas, cursor);
+    wp_editor.toTextArea();
+
     if ( document.selection ) { //IE
       canvas.focus();
       sel = document.selection.createRange();
@@ -446,6 +452,17 @@ function edButton(id, display, tagStart, tagEnd, access) {
       canvas.value += content;
       canvas.focus();
     }
+
+    // WP Editor
+    cursor = window.get_content_cursor(canvas, canvas.selectionStart);
+    line = cursor.line
+    console.log(cursor.ch)
+    console.log(line);
+    window.postCodeMirror(canvas.id);
+    wp_editor.setCursor(line, cursor.ch);
+    wp_editor.refresh();
+    wp_editor.focus();
+
     return true;
   };
 
