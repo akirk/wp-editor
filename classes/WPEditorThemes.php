@@ -30,10 +30,10 @@ class WPEditorThemes {
     }
     
     if ( isset( $_REQUEST['theme'] ) ) {
-      $theme = stripslashes( $_REQUEST['theme'] );
+      $theme = stripslashes( esc_html( $_REQUEST['theme'] ) );
     }
     if ( isset( $_REQUEST['file'] ) ) {
-      $file = stripslashes( $_REQUEST['file'] );
+      $file = stripslashes( esc_html( $_REQUEST['file'] ) );
       $theme = $_REQUEST['file'];
     }
     

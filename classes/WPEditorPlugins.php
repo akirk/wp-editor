@@ -25,10 +25,10 @@ class WPEditorPlugins {
     }
     
     if ( isset( $_REQUEST['plugin'] ) ) {
-      $plugin = stripslashes( $_REQUEST['plugin'] );
+      $plugin = stripslashes( esc_html( $_REQUEST['plugin'] ) );
     }
     if ( isset( $_REQUEST['file'] ) ) {
-      $file = stripslashes( $_REQUEST['file'] );
+      $file = stripslashes( esc_html( $_REQUEST['file'] ) );
     }
 
     if ( empty( $plugin) ) {
