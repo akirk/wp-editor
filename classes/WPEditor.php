@@ -321,7 +321,7 @@ class WPEditor {
 	}
 	
 	public static function replace_plugin_edit_links( $links ) {
-		$data = '';
+		$data = array();
 		if ( isset( $_REQUEST['plugin_status'] ) && in_array( $_REQUEST['plugin_status'], array( 'mustuse', 'dropins' ) ) ) {
 			$data = $links;
 		}
